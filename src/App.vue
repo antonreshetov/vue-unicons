@@ -2,7 +2,7 @@
   <div id="app">
     <div class="top-header">
       <div class="desc support">
-        support the developer, put a star to <a href="http://">
+        support the developer, put a star to <a href="https://github.com/antonreshetov/vue-unicons">
           GitHub
         </a> repo <unicon
           name="grin-tongue-wink-alt"
