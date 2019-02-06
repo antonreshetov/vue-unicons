@@ -17,7 +17,7 @@
           <span>{{ version }}</span>
         </span>
       </h1>
-      <p>1000+ Pixel-perfect svg icons for your next project.</p>
+      <p>1000+ Pixel-perfect svg <a href="https://github.com/iconscout/unicons">unicons</a> for your next project as Vue components</p>
       <p>
         Documentation
         <a href="https://github.com/antonreshetov/vue-unicons">
