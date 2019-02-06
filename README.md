@@ -54,7 +54,7 @@ App.vue
 
 ```html
 <template>
-  <unicon name="constructor" fill="royalblue"></Unicon>
+  <unicon name="constructor" fill="royalblue"></unicon>
 </template>
 
 <script>
