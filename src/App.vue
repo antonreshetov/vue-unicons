@@ -4,7 +4,7 @@
       <div class="desc support">
         support the developer, put a star to <a href="http://">
           GitHub
-        </a> repo <uni-icon
+        </a> repo <unicon
           name="grin-tongue-wink-alt"
           fill="limegreen"
         />
