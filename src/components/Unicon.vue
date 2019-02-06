@@ -15,7 +15,7 @@
 const icons = require('../icons.json')
 
 export default {
-  name: 'UniIcon',
+  name: 'Unicon',
 
   props: {
     name: {
