@@ -160,7 +160,7 @@ export default {
       this.category = cat
     },
     onCopy (name) {
-      this.html = `<uni-icon name="${name}"></uni-icon>`
+      this.html = `<unicon name="${name}"></unicon>`
       this.showAlert()
       setTimeout(() => {
         this.$refs.html.select()
