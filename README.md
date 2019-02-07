@@ -26,7 +26,11 @@ You can download latest version from the Github: [Download](https://github.com/a
 
 ### Global
 
-To use in your project, just import vue-unicons and install into Vue.
+To use in your project:
+
+1. Import vue-unicons
+2. Grab the icons you want and add then into unicons library
+3. Install Unicon into Vue
 
 main.js
 
@@ -34,7 +38,9 @@ main.js
 import Vue from 'vue'
 import App from './App.vue'
 import Unicon from 'vue-unicons'
+import { uniConstructor, uniChat } from 'vue-unicons/src/icons'
 
+Unicon.add([uniConstructor, uniChat])
 Vue.use(Unicon)
 
 new Vue({
@@ -47,25 +53,8 @@ App.vue
 ```html
 <template>
   <unicon name="constructor" fill="royalblue"></unicon>
+  <unicon name="chat" fill="limegreen"></unicon>
 </template>
-```
-
-### On demand
-
-```html
-<template>
-  <unicon name="constructor" fill="royalblue"></unicon>
-</template>
-
-<script>
-  import { Unicon } from 'vue-unicons'
-
-  export default {
-    components: {
-      Unicon
-    }
-  }
-</script>
 ```
 
 ## Props
