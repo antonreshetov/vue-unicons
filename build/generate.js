@@ -11,9 +11,12 @@ function build () {
   })
 
   const icons = unicons.map(icon => {
-    const file = fs.readFileSync(path.resolve('node_modules/unicons', icon.svg), 'utf-8', err => {
+    let file = fs.readFileSync(path.resolve('node_modules/unicons', icon.svg), 'utf-8', err => {
       if (err) console.error(err)
     })
+
+    // trim spaces, tabs, new lines
+    file = file.replace(/\r+|\n+|\t+/gm, '')
 
     const svgPath = file.match(/<path.*\/>/g)
 
