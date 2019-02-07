@@ -18,9 +18,11 @@
         </span>
       </h1>
       <p>
-        1000+ Pixel-perfect svg <a href="https://github.com/iconscout/unicons">
+        1000+ Pixel-perfect svg
+        <a href="https://github.com/iconscout/unicons">
           unicons
-        </a> for your next project as Vue components
+        </a>
+        for your next project as Vue components
       </p>
       <p>
         Documentation
@@ -47,11 +49,10 @@
           >
           <unicon name="search" />
         </div>
-        <div
-          class="desc"
-          style="text-align: right;"
-        >
-          Click by icon to copy html tag of component
+        <div class="copy-click">
+          <div class="desc">
+            Click by icon to copy <span :class="{'active': !toggle}">html tag</span> <toggle v-model="toggle"/><span :class="{'active': toggle}">icon name for import</span>
+          </div>
         </div>
       </div>
       <div class="categories">
@@ -77,7 +78,7 @@
           v-for="(i, idx) in searchedIcon"
           :key="idx"
           class="icons-list__item"
-          @click="onCopy(i.name)"
+          @click="onCopy(i)"
         >
           <unicon :name="i.name" />
           <span class="icon-desc">
@@ -96,7 +97,8 @@
           v-if="alert"
           class="overlay"
         >
-          <h3>Tag copied</h3>
+          <h3 v-if="toggle">Name copied</h3>
+          <h3 v-else>Tag copied</h3>
         </div>
       </transition>
       <!-- eslint-disable vue/no-v-html -->
@@ -111,6 +113,7 @@
 
 <script>
 import CarbonAd from './components/CarbonAd'
+import Toggle from './components/ui/Toggle'
 const icons = require('./demo.json')
 const version = require('../package.json').version
 
@@ -118,7 +121,8 @@ export default {
   name: 'App',
 
   components: {
-    CarbonAd
+    CarbonAd,
+    Toggle
   },
 
   data () {
@@ -127,7 +131,8 @@ export default {
       category: 'All',
       alert: false,
       html: '',
-      version
+      version,
+      toggle: false
     }
   },
 
@@ -163,8 +168,12 @@ export default {
     selectCat (cat) {
       this.category = cat
     },
-    onCopy (name) {
-      this.html = `<unicon name="${name}"></unicon>`
+    onCopy (icon) {
+      if (this.toggle) {
+        this.html = icon.nameFormatted
+      } else {
+        this.html = `<unicon name="${icon.name}" />`
+      }
       this.showAlert()
       setTimeout(() => {
         this.$refs.html.select()
@@ -182,13 +191,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Roboto:700,400,300');
-
-$color-main: royalblue;
-$color-border: lighten($color-main, 32%);
-$color-grey: #ddd;
-$color-grey-2: #aaa;
-$font-family: 'Roboto', sans-serif;
+@import "./assets/scss/vars";
 
 * {
     box-sizing: border-box;
@@ -204,6 +207,7 @@ $font-family: 'Roboto', sans-serif;
 
 a {
   color: $color-main;
+  display: inline-block;
 }
 
 .top-header {
@@ -373,6 +377,18 @@ a {
   background-color: rgba(255, 255, 255, 0.8);
   h3 {
     font-size: 24px;
+  }
+}
+
+.copy-click {
+  text-align: right;
+  .active {
+    color: $color-main;
+  }
+  .toggle {
+    position: relative;
+    top: 6px;
+    margin: 0 5px;
   }
 }
 
