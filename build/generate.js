@@ -1,21 +1,37 @@
 const fs = require('fs')
 const path = require('path')
-const util = require('util')
-const icons = require('unicons/icons.json')
+const unicons = require('unicons/icons.json')
+const Handlebars = require('handlebars')
+const camelCase = require('lodash.camelcase')
+const dist = path.resolve(__dirname, '../src/')
 
-const iconsWithPath = []
-
-icons.forEach(icon => {
-  fs.readFile(path.resolve('node_modules/unicons', icon.svg), 'utf-8', (err, file) => {
-    if (err) throw err
-
-    file = file.match(/<path.*\/>/g)
-
-    if (file) file = file[0]
-
-    icon.path = file
-
-    iconsWithPath.push(icon)
-    fs.writeFileSync(path.resolve(__dirname, '../src/icons.json'), JSON.stringify(iconsWithPath))
+function build () {
+  const iconTemplate = fs.readFileSync(path.resolve(__dirname, './icon.hbs'), 'utf-8', err => {
+    if (err) console.error(err)
   })
-})
+
+  const icons = unicons.map(icon => {
+    const file = fs.readFileSync(path.resolve('node_modules/unicons', icon.svg), 'utf-8', err => {
+      if (err) console.error(err)
+    })
+
+    const svgPath = file.match(/<path.*\/>/g)
+
+    if (svgPath) icon.path = svgPath[0]
+
+    const name = camelCase(icon.name)
+    icon.nameFormatted = 'uni' + name.charAt(0).toUpperCase() + name.slice(1)
+
+    return icon
+  })
+
+  const template = Handlebars.compile(iconTemplate)
+  const file = template({ icons })
+
+  // Divided by icon list
+  fs.writeFileSync(`${dist}/icons.js`, file)
+  // Icons list to demo app
+  fs.writeFileSync(`${dist}/demo.json`, JSON.stringify(icons))
+}
+
+build()

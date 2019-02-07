@@ -17,7 +17,11 @@
           <span>{{ version }}</span>
         </span>
       </h1>
-      <p>1000+ Pixel-perfect svg <a href="https://github.com/iconscout/unicons">unicons</a> for your next project as Vue components</p>
+      <p>
+        1000+ Pixel-perfect svg <a href="https://github.com/iconscout/unicons">
+          unicons
+        </a> for your next project as Vue components
+      </p>
       <p>
         Documentation
         <a href="https://github.com/antonreshetov/vue-unicons">
@@ -76,7 +80,9 @@
           @click="onCopy(i.name)"
         >
           <unicon :name="i.name" />
-          <span class="icon-desc">{{ i.name }}</span>
+          <span class="icon-desc">
+            {{ i.name }}
+          </span>
         </div>
       </div>
       <div
@@ -84,7 +90,7 @@
         class="no-result"
       >
         Sorry, no result
-      </div class="no-result">
+      </div>
       <transition name="fade">
         <div
           v-if="alert"
@@ -104,16 +110,14 @@
 </template>
 
 <script>
-import Unicon from './components/Unicon'
 import CarbonAd from './components/CarbonAd'
-const icons = require('./icons.json')
+const icons = require('./demo.json')
 const version = require('../package.json').version
 
 export default {
   name: 'App',
 
   components: {
-    Unicon,
     CarbonAd
   },
 

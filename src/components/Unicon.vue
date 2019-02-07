@@ -12,7 +12,6 @@
 </template>
 
 <script>
-const icons = require('../icons.json')
 
 export default {
   name: 'Unicon',
@@ -36,15 +35,19 @@ export default {
     }
   },
 
-  data () {
-    return {
+  lib: [],
 
+  add (icons) {
+    if (Array.isArray(icons)) {
+      this.lib = icons
+    } else {
+      this.lib.push(icons)
     }
   },
 
   computed: {
     icon () {
-      let icon = icons.find(i => i.name === this.name)
+      const icon = this.$options.lib.find(i => i.name === this.name)
 
       if (icon) {
         return icon.path
@@ -56,7 +59,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>
