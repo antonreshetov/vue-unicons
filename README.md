@@ -29,7 +29,7 @@ You can download latest version from the Github: [Download](https://github.com/a
 To use in your project:
 
 1. Import vue-unicons
-2. Grab the icons you want and add then into unicons library
+2. Grab the icons you want and add then into Unicon library
 3. Install Unicon into Vue
 
 main.js
