@@ -1,5 +1,8 @@
 import { shallowMount } from '@vue/test-utils'
 import { Unicon } from '../../src/components'
+import { uniConstructor } from '../../src/icons'
+
+Unicon.add([uniConstructor])
 
 const baseProps = {
   name: 'constructor',
@@ -35,7 +38,9 @@ describe('Unicon', () => {
     expect(svg.attributes().fill).toBe('limegreen')
   })
   it('click event is emitted', () => {
-    const wrapper = shallowMount(Unicon)
+    const wrapper = shallowMount(Unicon, {
+      propsData: baseProps
+    })
     const svg = wrapper.find('svg')
     svg.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
