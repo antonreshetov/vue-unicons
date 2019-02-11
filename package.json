@@ -2,17 +2,8 @@
   "name": "vue-unicons",
   "version": "1.2.0",
   "private": false,
-  "keywords": [
-    "vue",
-    "vuejs",
-    "vue-component",
-    "vue-icons",
-    "components",
-    "icons"
-  ],
+  "description": "1000+ Pixel-perfect svg icons for your next project as Vue components",
   "main": "dist/vue-unicons.common.js",
-  "license": "MIT",
-  "author": "Anton Reshetov",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "npm run test:unit && vue-cli-service build --target lib --name vue-unicons ./src/components/index.js",
@@ -21,6 +12,23 @@
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
+  "license": "MIT",
+  "author": "Anton Reshetov",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonreshetov/vue-unicons"
+  },
+  "bugs": {
+    "url": "https://github.com/antonreshetov/vue-unicons/issues"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vue-component",
+    "vue-icons",
+    "components",
+    "icons"
+  ],
   "dependencies": {
     "unicons": "github:iconscout/unicons#master",
     "vue": "^2.5.22"
