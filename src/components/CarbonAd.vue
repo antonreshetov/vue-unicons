@@ -29,6 +29,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/scss/vars';
+
 .carbon {
   min-height: 102px;
   max-width: 300px;
@@ -38,7 +40,10 @@ export default {
   position: absolute;
   right: 0;
   padding: 0 0 10px 10px;
-
+  @media (max-width: $sm) {
+    left: 0;
+    margin: 0 auto;
+  }
   &-text {
     text-align: right;
   }

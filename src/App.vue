@@ -51,7 +51,11 @@
         </div>
         <div class="copy-click">
           <div class="desc">
-            Click by icon to copy <span :class="{'active': !toggle}">html tag</span> <toggle v-model="toggle"/><span :class="{'active': toggle}">icon name for import</span>
+            Click by icon to copy <span :class="{'active': !toggle}">
+              html tag
+            </span> <toggle v-model="toggle" /><span :class="{'active': toggle}">
+              icon name for import
+            </span>
           </div>
         </div>
       </div>
@@ -97,8 +101,12 @@
           v-if="alert"
           class="overlay"
         >
-          <h3 v-if="toggle">Name copied</h3>
-          <h3 v-else>Tag copied</h3>
+          <h3 v-if="toggle">
+            Name copied
+          </h3>
+          <h3 v-else>
+            Tag copied
+          </h3>
         </div>
       </transition>
       <!-- eslint-disable vue/no-v-html -->
@@ -194,7 +202,7 @@ export default {
 @import "./assets/scss/vars";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #app {
@@ -212,9 +220,18 @@ a {
 
 .top-header {
   margin-top: 40px;
+  @media (max-width: $sm) {
+    margin-top: 20px;
+  }
+  @media (max-width: $xs) {
+    margin-top: 0px;
+  }
   .support {
     margin-bottom: 20px;
     text-align: right;
+    @media (max-width: $sm) {
+      text-align: center;
+    }
     svg {
       position: relative;
       top: 6px;
@@ -223,6 +240,10 @@ a {
 }
 .header {
   margin-top: 120px;
+  @media (max-width: $sm) {
+    text-align: center;
+    margin-top: 160px;
+  }
 }
 
 .content {
@@ -232,10 +253,19 @@ a {
   grid-template-areas:
     "top top"
     "side main";
+  @media (max-width: $sm) {
+    display: block;
+  }
   .top {
      grid-area: top;
+     @media (max-width: $xs) {
+       margin: 40px 0;
+     }
   }
   .categories {
+    @media (max-width: $sm) {
+      display: none;
+    }
     h4 {
       font-size: 14px;
       margin-top: 0;
@@ -271,6 +301,13 @@ a {
     grid-gap: 10px;
     justify-content: center;
     max-height: 700px;
+    @media (max-width: $sm) {
+      grid-template-columns: repeat(5, 1fr);
+      overflow-y: visible;
+    }
+    @media (max-width: $xs) {
+      grid-template-columns: repeat(3, 1fr);
+    }
     &__item {
       display: flex;
       width: 100%;
@@ -282,6 +319,9 @@ a {
       position: relative;
       transition: all 0.2s;
       cursor: pointer;
+      @media (max-width: $sm) {
+        height: 113px;
+      }
       .icon-desc {
         font-size: 12px;
         color: $color-grey-2;
@@ -326,6 +366,9 @@ a {
 }
 
 .demo {
+  @media (max-width: $xs) {
+    display: none;
+  }
   code {
     background: #eee;
     padding: 0 10px;
@@ -382,6 +425,9 @@ a {
 
 .copy-click {
   text-align: right;
+  @media (max-width: $sm) {
+    display: none;
+  }
   .active {
     color: $color-main;
   }
