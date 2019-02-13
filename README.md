@@ -2,6 +2,14 @@
 
 <img src="./src/assets/hero.png" alt="logo of vue-unicons repository">
 
+<p align="center">
+  <img src="https://img.shields.io/npm/v/vue-unicons.svg">
+  <img src="https://img.shields.io/github/issues/antonreshetov/vue-unicons.svg">
+  <img src="https://img.shields.io/npm/dw/vue-unicons.svg">
+  <img src="https://travis-ci.com/antonreshetov/vue-unicons.svg?branch=master">
+  <img src="https://img.shields.io/github/license/antonreshetov/vue-unicons.svg">
+</p>
+
 1000+ Pixel-perfect svg [unicons](https://github.com/iconscout/unicons) for your next project as Vue components
 
 ## Demo
