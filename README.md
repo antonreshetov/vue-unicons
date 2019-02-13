@@ -79,3 +79,9 @@ App.vue
 | Name    | Description                     | Payload |
 | ------- | ------------------------------- | ------- |
 | `click` | Triggered when icon was clicked | -       |
+
+## License
+
+Vue Unicons licensed under MIT.
+
+[Unicons](https://github.com/iconscout/unicons) licensed under Apache 2.0
