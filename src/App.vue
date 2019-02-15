@@ -53,7 +53,7 @@
           <div class="desc">
             <div
               class="show-cart-toggle"
-              @click="showCartView = !showCartView"
+              @click="toggleCartShow"
             >
               <span v-if="!showCartView">
                 Show cart
@@ -251,6 +251,10 @@ new Vue({
     getFromLocalStorage () {
       const icons = window.localStorage.getItem('icons')
       if (icons) this.iconCart = JSON.parse(icons)
+    },
+    toggleCartShow () {
+      this.showCartView = !this.showCartView
+      this.$bus.$emit('cart')
     }
   }
 }
