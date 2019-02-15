@@ -254,7 +254,6 @@ new Vue({
     },
     toggleCartShow () {
       this.showCartView = !this.showCartView
-      this.$bus.$emit('cart')
     }
   }
 }

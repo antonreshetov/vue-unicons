@@ -4,7 +4,6 @@ import Unicon from './components'
 import * as icons from './icons'
 
 Vue.config.productionTip = false
-Vue.prototype.$bus = new Vue()
 
 Unicon.add(Object.values({ ...icons }))
 Vue.use(Unicon)

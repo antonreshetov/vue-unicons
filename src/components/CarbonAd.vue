@@ -2,9 +2,11 @@
 export default {
   mounted () {
     this.load()
-    this.$bus.$on('cart', () => {
-      this.$el.innerHTML = ''
-      this.load()
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        this.$el.innerHTML = ''
+        this.load()
+      }
     })
   },
 
