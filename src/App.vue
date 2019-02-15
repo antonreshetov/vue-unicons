@@ -19,7 +19,7 @@
       </h1>
       <p>
         1000+ Pixel-perfect svg
-        <a href="https://github.com/iconscout/unicons">
+        <a href="https://iconscout.com/unicons?ref=vue-unicons">
           unicons
         </a>
         for your next project as Vue components
