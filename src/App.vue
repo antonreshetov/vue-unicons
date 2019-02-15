@@ -51,15 +51,58 @@
         </div>
         <div class="copy-click">
           <div class="desc">
-            Click by icon to copy <span :class="{'active': !toggle}">
-              html tag
-            </span> <toggle v-model="toggle" /><span :class="{'active': toggle}">
-              icon name for import
-            </span>
+            <div
+              class="show-cart-toggle"
+              @click="showCartView = !showCartView"
+            >
+              <span v-if="!showCartView">
+                Show cart
+              </span>
+              <span v-else>
+                Hide cart
+              </span>
+            </div>
+            <icon-cart :icons="iconCart" />
           </div>
         </div>
       </div>
-      <div class="categories">
+      <div
+        v-if="showCartView"
+        class="cart-view"
+      >
+        <div
+          ref="code"
+          class="instruction"
+        >
+          <h3>Usage</h3>
+          <!-- eslint-disable vue/no-v-html -->
+          <pre v-html="code" />
+        </div>
+        <h3>Icons</h3>
+        <div class="icons-list">
+          <div
+            v-for="(i, idx) in iconCart"
+            :key="idx"
+            class="icons-list__item"
+            :class="{'icons-list__item--active': isInCart(i)}"
+          >
+            <unicon :name="i.name" />
+            <span class="icon-desc">
+              {{ i.name }}
+            </span>
+            <div
+              class="icons-list__item-remove"
+              @click="removeFromCart(idx)"
+            >
+              <unicon name="times" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        v-show="!showCartView"
+        class="categories"
+      >
         <h4>Categories</h4>
         <ul class="categories__list">
           <li
@@ -73,16 +116,16 @@
           </li>
         </ul>
       </div>
-
       <div
-        v-if="!isNoResult"
+        v-show="!isNoResult && !showCartView"
         class="icons-list"
       >
         <div
           v-for="(i, idx) in searchedIcon"
           :key="idx"
           class="icons-list__item"
-          @click="onCopy(i)"
+          :class="{'icons-list__item--active': isInCart(i)}"
+          @click="addToCart(i)"
         >
           <unicon :name="i.name" />
           <span class="icon-desc">
@@ -96,32 +139,15 @@
       >
         Sorry, no result
       </div>
-      <transition name="fade">
-        <div
-          v-if="alert"
-          class="overlay"
-        >
-          <h3 v-if="toggle">
-            Name copied
-          </h3>
-          <h3 v-else>
-            Tag copied
-          </h3>
-        </div>
-      </transition>
-      <!-- eslint-disable vue/no-v-html -->
-      <textarea
-        ref="html"
-        style="opacity: 0"
-        v-html="html"
-      />
     </div>
   </div>
 </template>
 
 <script>
 import CarbonAd from './components/CarbonAd'
-import Toggle from './components/ui/Toggle'
+import IconCart from './components/ui/IconCart'
+import Prism from 'prismjs'
+import 'prismjs/themes/prism-okaidia.css'
 const icons = require('./demo.json')
 const version = require('../package.json').version
 
@@ -130,7 +156,7 @@ export default {
 
   components: {
     CarbonAd,
-    Toggle
+    IconCart
   },
 
   data () {
@@ -140,7 +166,9 @@ export default {
       alert: false,
       html: '',
       version,
-      toggle: false
+      toggle: false,
+      iconCart: [],
+      showCartView: false
     }
   },
 
@@ -148,7 +176,6 @@ export default {
     icons () {
       return icons
     },
-
     searchedIcon () {
       const icons = this.icons.filter(i => i.category === this.category)
       const re = new RegExp(this.search.toLowerCase())
@@ -157,7 +184,6 @@ export default {
         return icons.filter(i => i.tags.find(t => re.test(t)))
       } else return this.icons.filter(i => i.tags.find(t => re.test(t)))
     },
-
     categories () {
       let categories = icons.map(i => i.category)
       categories = icons.map(i => i.category)
@@ -169,30 +195,62 @@ export default {
     },
     isNoResult () {
       return this.searchedIcon.length === 0
+    },
+    code () {
+      let iconName = this.iconCart.map(i => {
+        return `${i.nameFormatted}`
+      })
+      iconName = iconName.join(', ')
+      const code = `import Vue from 'vue'
+import App from './App.vue'
+import Unicon from 'vue-unicons'
+import { ${iconName} } from 'vue-unicons/src/icons'
+
+Unicon.add([${iconName}])
+Vue.use(Unicon)
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')`
+
+      return Prism.highlight(code, Prism.languages.javascript, 'javascript')
     }
+  },
+
+  created () {
+    this.getFromLocalStorage()
   },
 
   methods: {
     selectCat (cat) {
       this.category = cat
     },
-    onCopy (icon) {
-      if (this.toggle) {
-        this.html = icon.nameFormatted
+    addToCart (icon) {
+      const index = this.iconCart.findIndex(i => i.name === icon.name)
+
+      if (index === -1) {
+        this.iconCart.push(icon)
+        this.storeToLocalStorage()
       } else {
-        this.html = `<unicon name="${icon.name}" />`
+        this.iconCart.splice(index, 1)
+        this.storeToLocalStorage()
       }
-      this.showAlert()
-      setTimeout(() => {
-        this.$refs.html.select()
-        document.execCommand('copy')
-      }, 10)
     },
-    showAlert () {
-      this.alert = true
-      setTimeout(() => {
-        this.alert = false
-      }, 500)
+    removeFromCart (index) {
+      this.iconCart.splice(index, 1)
+      this.storeToLocalStorage()
+    },
+    isInCart (icon) {
+      const isInCart = this.iconCart.findIndex(i => i.name === icon.name) !== -1
+      return isInCart
+    },
+    storeToLocalStorage () {
+      const icons = JSON.stringify(this.iconCart)
+      window.localStorage.setItem('icons', icons)
+    },
+    getFromLocalStorage () {
+      const icons = window.localStorage.getItem('icons')
+      if (icons) this.iconCart = JSON.parse(icons)
     }
   }
 }
@@ -257,10 +315,41 @@ a {
     display: block;
   }
   .top {
-     grid-area: top;
-     @media (max-width: $xs) {
-       margin: 40px 0;
-     }
+    grid-area: top;
+    @media (max-width: $xs) {
+      margin: 40px 0;
+    }
+  }
+  .show-cart-toggle {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    top: -10px;
+    margin-right: 10px;
+  }
+  .cart-view {
+    grid-column:  span 2;
+    .instruction {
+      pre {
+        width: 100%;
+        border: none;
+        border-radius: 3px;
+        font-size: 14px;
+        overflow: auto;
+        line-height: 24px;
+        background-color: #2d2d2d;
+        padding: 20px;
+        color: #fff;
+      }
+    }
+    .icons-list {
+      grid-template-columns: repeat(8, 1fr);
+      &__item {
+        cursor: default;
+        height: 116px;
+      }
+    }
   }
   .categories {
     @media (max-width: $sm) {
@@ -319,8 +408,32 @@ a {
       position: relative;
       transition: all 0.2s;
       cursor: pointer;
+      &-remove {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 3px;
+        cursor: pointer;
+        &:hover {
+          svg {
+            fill: red;
+          }
+        }
+        svg {
+          fill: #aaa;
+        }
+      }
+      svg {
+        transition: all 0.2s;
+      }
       @media (max-width: $sm) {
         height: 113px;
+      }
+      &--active {
+        background: lighten($color-border, 9%);
+        > svg {
+          fill: $color-main;
+        }
       }
       .icon-desc {
         font-size: 12px;
