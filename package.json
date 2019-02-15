@@ -30,6 +30,7 @@
     "icons"
   ],
   "dependencies": {
+    "prismjs": "^1.15.0",
     "unicons": "github:iconscout/unicons#master",
     "vue": "^2.5.22"
   },
