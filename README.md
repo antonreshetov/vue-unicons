@@ -14,6 +14,12 @@
 
 [https://antonreshetov.github.io/vue-unicons](https://antonreshetov.github.io/vue-unicons/)
 
+## Developed with love for developers
+
+A simple way to add the necessary icons and install them.
+
+<img src="./src/assets/demo.gif" alt="demo">
+
 ## Install
 
 ### NPM
@@ -44,9 +50,9 @@ main.js
 import Vue from 'vue'
 import App from './App.vue'
 import Unicon from 'vue-unicons'
-import { uniConstructor, uniChat } from 'vue-unicons/src/icons'
+import { uniConstructor, uniCarWash } from 'vue-unicons/src/icons'
 
-Unicon.add([uniConstructor, uniChat])
+Unicon.add([uniConstructor, uniCarWash])
 Vue.use(Unicon)
 
 new Vue({
@@ -59,7 +65,7 @@ App.vue
 ```html
 <template>
   <unicon name="constructor" fill="royalblue"></unicon>
-  <unicon name="chat" fill="limegreen"></unicon>
+  <unicon name="car-wash" fill="limegreen"></unicon>
 </template>
 ```
 
