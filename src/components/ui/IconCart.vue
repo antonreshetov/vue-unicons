@@ -1,5 +1,8 @@
 <template>
-  <div class="icon-cart">
+  <div
+    class="icon-cart"
+    @click="$emit('click')"
+  >
     <unicon
       name="shopping-basket"
       width="36"
@@ -34,6 +37,7 @@ export default {
 .icon-cart {
   display: inline-block;
   position: relative;
+  cursor: pointer;
   .count {
     position: absolute;
     display: flex;

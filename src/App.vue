@@ -62,7 +62,10 @@
                 Hide cart
               </span>
             </div>
-            <icon-cart :icons="iconCart" />
+            <icon-cart
+              :icons="iconCart"
+              @click="toggleCartShow"
+            />
           </div>
         </div>
       </div>
