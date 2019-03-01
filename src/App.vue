@@ -118,6 +118,7 @@
       </div>
       <div
         v-show="!isNoResult && !showCartView"
+        ref="iconList"
         class="icons-list"
       >
         <div
@@ -224,6 +225,7 @@ new Vue({
   methods: {
     selectCat (cat) {
       this.category = cat
+      this.scrollToTopList()
     },
     addToCart (icon) {
       const index = this.iconCart.findIndex(i => i.name === icon.name)
@@ -254,6 +256,9 @@ new Vue({
     },
     toggleCartShow () {
       this.showCartView = !this.showCartView
+    },
+    scrollToTopList () {
+      this.$refs.iconList.scrollTop = 0
     }
   }
 }
