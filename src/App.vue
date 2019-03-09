@@ -219,6 +219,7 @@ new Vue({
 
   created () {
     this.getFromLocalStorage()
+    this.$ga.page('/')
   },
 
   methods: {
@@ -231,9 +232,11 @@ new Vue({
       if (index === -1) {
         this.iconCart.push(icon)
         this.storeToLocalStorage()
+        this.gaEventClick('add to cart')
       } else {
         this.iconCart.splice(index, 1)
         this.storeToLocalStorage()
+        this.gaEventClick('remove from cart')
       }
     },
     removeFromCart (index) {
@@ -254,6 +257,11 @@ new Vue({
     },
     toggleCartShow () {
       this.showCartView = !this.showCartView
+      if (this.showCartView) {
+        this.gaEventClick('show cart')
+      } else {
+        this.gaEventClick('hide cart')
+      }
     }
   }
 }
