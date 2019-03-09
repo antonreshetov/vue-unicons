@@ -12,7 +12,7 @@ Vue.use(Unicon)
 Vue.use(VueAnalytics, {
   id: process.env.VUE_APP_GA,
   debug: {
-    enabled: true,
+    enabled: process.env.NODE_ENV === 'development',
     sendHitTask: process.env.NODE_ENV === 'production'
   }
 })
