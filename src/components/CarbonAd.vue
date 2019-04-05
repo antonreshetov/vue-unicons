@@ -1,6 +1,8 @@
 <script>
 export default {
   mounted () {
+    if (process.env.NODE_ENV === 'development') return
+
     this.load()
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) {
