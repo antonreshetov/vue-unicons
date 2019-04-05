@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils'
 import { Unicon } from '../../src/components'
-import { uniConstructor } from '../../src/icons'
+import * as icons from '../../src/icons'
 
-Unicon.add([uniConstructor])
+Unicon.add(Object.values({ ...icons }))
 
 const baseProps = {
   name: 'constructor',
@@ -12,30 +12,27 @@ const baseProps = {
 }
 
 describe('Unicon', () => {
-  it('is rendered with props', () => {
-    const wrapper = shallowMount(Unicon, {
-      propsData: baseProps
+  it('is all rendered', () => {
+    Object.values(icons).forEach(icon => {
+      const wrapper = shallowMount(Unicon, {
+        propsData: {
+          name: icon.name,
+          width: '20',
+          height: '20',
+          fill: 'limegreen'
+        }
+      })
+      const svg = wrapper.find('svg')
+
+      expect(wrapper.exists()).toBe(true)
+      expect(wrapper.props().name).toBe(icon.name)
+      expect(wrapper.props().width).toBe('20')
+      expect(wrapper.props().height).toBe('20')
+      expect(wrapper.props().fill).toBe('limegreen')
+      expect(svg.attributes().fill).toBe('limegreen')
+      expect(svg.attributes().width).toBe('20')
+      expect(svg.attributes().height).toBe('20')
     })
-    expect(wrapper.exists()).toBe(true)
-    expect(wrapper.props().name).toBe('constructor')
-    expect(wrapper.props().width).toBe('20')
-    expect(wrapper.props().height).toBe('20')
-    expect(wrapper.props().fill).toBe('limegreen')
-  })
-  it('is rendered with dimensions', () => {
-    const wrapper = shallowMount(Unicon, {
-      propsData: baseProps
-    })
-    const svg = wrapper.find('svg')
-    expect(svg.attributes().width).toBe('20')
-    expect(svg.attributes().height).toBe('20')
-  })
-  it('is rendered with color', () => {
-    const wrapper = shallowMount(Unicon, {
-      propsData: baseProps
-    })
-    const svg = wrapper.find('svg')
-    expect(svg.attributes().fill).toBe('limegreen')
   })
   it('click event is emitted', () => {
     const wrapper = shallowMount(Unicon, {
