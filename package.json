@@ -30,8 +30,8 @@
     "icons"
   ],
   "dependencies": {
+    "@iconscout/unicons": "0.0.4",
     "prismjs": "^1.15.0",
-    "unicons": "github:iconscout/unicons#master",
     "vue": "^2.5.22",
     "vue-analytics": "^5.16.2"
   },
