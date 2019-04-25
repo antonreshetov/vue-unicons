@@ -11,6 +11,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   npm run build
   git add -A
-  npm version $VERSION -m "release $VERSION"
+  npm version $VERSION -m "build: release $VERSION"
   git push origin master
 fi
