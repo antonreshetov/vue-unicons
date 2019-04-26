@@ -1,3 +1,4 @@
+/* tslint:disable:only-arrow-functions */
 import Vue, { VueConstructor } from 'vue'
 
 declare module "vue-unicons" {
