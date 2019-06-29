@@ -60,6 +60,16 @@ new Vue({
 }).$mount('#app')
 ```
 
+If you want to import all
+```
+import Vue from "vue"
+import Unicon from "vue-unicons"
+import * as Icons from "vue-unicons/src/icons"
+
+Unicon.add(Object.values({ ...Icons }))
+Vue.use(Unicon)
+```
+
 App.vue
 
 ```html
