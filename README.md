@@ -44,7 +44,7 @@ To use in your project:
 2. Grab the icons you want and add then into Unicon library
 3. Install Unicon into Vue
 
-main.js
+`main.js`
 
 ```js
 import Vue from 'vue'
@@ -60,7 +60,9 @@ new Vue({
 }).$mount('#app')
 ```
 
-App.vue
+`App.vue`
+
+> Use the name of icon without the uni prefix and in the kebab-case - `uniCarWash` -> `car-wash`
 
 ```html
 <template>
@@ -68,6 +70,51 @@ App.vue
   <unicon name="car-wash" fill="limegreen"></unicon>
 </template>
 ```
+
+## Add custom icons
+
+No icons you need? No problem, you can add custom svg icons.
+
+`custom-icons.js`
+
+```js
+// Always use a prefix to avoid coincidence with existing icons.
+export const myCustomIcon = {
+  name: 'my-custom-icon',
+  path: '<path d="M16.327 10.775a.312.312 0 0...</path>' // Copy everything inside the svg tag of the icon you want and past there
+}
+```
+
+>For correct positioning of svg icon please make sure that the icon to be added has `viewBox="0 0 X X"`
+
+`main.js`
+
+```js
+import Vue from 'vue'
+import App from './App.vue'
+import Unicon from 'vue-unicons'
+import { uniConstructor, uniCarWash } from 'vue-unicons/src/icons'
+import { myCustomIcon } from './custom-icons'
+
+Unicon.add([uniConstructor, uniCarWash, myCustomIcon])
+Vue.use(Unicon)
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
+```
+
+`App.vue`
+
+```html
+<template>
+  <unicon name="constructor" fill="royalblue"></unicon>
+  <unicon name="car-wash" fill="limegreen"></unicon>
+  <unicon name="my-custom-icon" fill="royalblue" />
+</template>
+```
+
+[See example](https://codesandbox.io/s/vue-template-t8y1l)
 
 ## Props
 
