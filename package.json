@@ -1,6 +1,6 @@
 {
   "name": "vue-unicons",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": false,
   "description": "1000+ Pixel-perfect svg icons for your next project as Vue components",
   "main": "dist/vue-unicons.common.js",
