@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import { Unicon } from '../../src/components'
-import * as icons from '../../src/icons'
+const icons = require('../../src/icons')
 
 Unicon.add(Object.values({ ...icons }))
 
