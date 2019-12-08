@@ -50,9 +50,9 @@ To use in your project:
 import Vue from 'vue'
 import App from './App.vue'
 import Unicon from 'vue-unicons'
-import { uniConstructor, uniCarWash } from 'vue-unicons/src/icons'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/src/icons'
 
-Unicon.add([uniConstructor, uniCarWash])
+Unicon.add([uniLayerGroupMonochrome, uniCarWash])
 Vue.use(Unicon)
 
 new Vue({
@@ -62,12 +62,16 @@ new Vue({
 
 `App.vue`
 
-> Use the name of icon without the uni prefix and in the kebab-case - `uniCarWash` -> `car-wash`
+> Use the name of icon without the uni prefix, icon style and in the kebab-case :
+> `uniCarWash` -> `car-wash`
+> `uniLayerGroupMonochrome` -> `layer-group`
 
 ```html
 <template>
-  <unicon name="constructor" fill="royalblue"></unicon>
-  <unicon name="car-wash" fill="limegreen"></unicon>
+  <div>
+    <unicon name="car-wash" fill="limegreen"></unicon>
+    <unicon name="layer-group" fill="royalblue" icon-style="monochrome></unicon>
+  </div>
 </template>
 ```
 
@@ -108,9 +112,11 @@ new Vue({
 
 ```html
 <template>
-  <unicon name="constructor" fill="royalblue"></unicon>
-  <unicon name="car-wash" fill="limegreen"></unicon>
-  <unicon name="my-custom-icon" fill="royalblue" />
+  <div>
+    <unicon name="constructor" fill="royalblue"></unicon>
+    <unicon name="car-wash" fill="limegreen"></unicon>
+    <unicon name="my-custom-icon" fill="royalblue" />
+  </div>
 </template>
 ```
 
@@ -118,16 +124,17 @@ new Vue({
 
 ## Props
 
-| Name        | Description        | Type     | Accepted values          |
-| ----------- | ------------------ | -------- | ------------------------ |
-| `name`      | Icon name          | `string` | -                        |
-| `width`     | Width of icon      | `string` | -                        |
-| `height`    | Height of icon     | `string` | -                        |
-| `fill`      | Fill color of icon | `string` | HEX or color name        |
+|     Name     |    Description     |   Type   |  Accepted values  | Default value |
+| ------------ | ------------------ | -------- | ----------------- | ------------- |
+| `name`       | Icon name          | `string` | -                 | -             |
+| `width`      | Width of icon      | `string` | -                 | -             |
+| `height`     | Height of icon     | `string` | -                 | -             |
+| `fill`       | Fill color of icon | `string` | HEX or color name | -             |
+| `icon-style` | Icon style         | `string` | line / monochrome | line          |
 
 ## Events
 
-| Name    | Description                     | Payload |
+|  Name   |           Description           | Payload |
 | ------- | ------------------------------- | ------- |
 | `click` | Triggered when icon was clicked | -       |
 

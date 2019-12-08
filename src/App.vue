@@ -36,6 +36,13 @@
           name="constructor"
           fill="royalblue"
         />
+        <br>
+        <code>&lt;unicon name=&quot;layer-group&quot; fill=&quot;deeppink&quot; icon-style=&quot;monochrome&quot; /&gt;</code>
+        <unicon
+          name="layer-group"
+          fill="deeppink"
+          icon-style="monochrome"
+        />
       </div>
     </div>
     <div class="content">
@@ -49,7 +56,19 @@
           >
           <unicon name="search" />
         </div>
-        <div class="copy-click">
+        <div class="action-bar">
+          <ul class="icon-style">
+            <li
+              v-for="i in styles"
+              :key="i.value"
+              :class="{
+                'active': i.value === style
+              }"
+              @click="style = i.value"
+            >
+              {{ i.label }}
+            </li>
+          </ul>
           <div class="desc">
             <div
               class="show-cart-toggle"
@@ -86,7 +105,11 @@
             class="icons-list__item"
             :class="{'icons-list__item--active': isInCart(i)}"
           >
-            <unicon :name="i.name" />
+            <unicon
+              :name="i.name"
+              fill="royalblue"
+              :icon-style="i.style"
+            />
             <span class="icon-desc">
               {{ i.name }}
             </span>
@@ -128,7 +151,11 @@
           :class="{'icons-list__item--active': isInCart(i)}"
           @click="addToCart(i)"
         >
-          <unicon :name="i.name" />
+          <unicon
+            :name="i.name"
+            fill="royalblue"
+            :icon-style="i.style"
+          />
           <span class="icon-desc">
             {{ i.name }}
           </span>
@@ -164,6 +191,11 @@ export default {
     return {
       search: '',
       category: 'All',
+      style: 'line',
+      styles: [
+        { label: 'Line', value: 'line' },
+        { label: 'Monochrome', value: 'monochrome' }
+      ],
       alert: false,
       html: '',
       version,
@@ -177,17 +209,22 @@ export default {
     icons () {
       return icons
     },
+    iconsByStyle () {
+      return this.icons.filter(i => i.style === this.style)
+    },
     searchedIcon () {
-      const icons = this.icons.filter(i => i.category === this.category)
+      const icons = this.iconsByStyle.filter(i => i.category === this.category)
       const re = new RegExp(this.search.toLowerCase())
 
       if (icons.length) {
         return icons.filter(i => i.tags.find(t => re.test(t)))
-      } else return this.icons.filter(i => i.tags.find(t => re.test(t)))
+      } else {
+        return this.iconsByStyle.filter(i => i.tags.find(t => re.test(t)))
+      }
     },
     categories () {
-      let categories = icons.map(i => i.category)
-      categories = icons.map(i => i.category)
+      let categories = this.iconsByStyle.map(i => i.category)
+      categories = this.iconsByStyle.map(i => i.category)
       categories = categories.filter((v, i, a) => a.indexOf(v) === i)
       categories = categories.sort()
       categories.unshift('All')
@@ -552,8 +589,28 @@ a {
   }
 }
 
-.copy-click {
-  text-align: right;
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+
+  .icon-style {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline-block;
+      cursor: pointer;
+      color: #aaa;
+      &.active {
+        color: $color-main;
+        font-weight: 600;
+      }
+      + li {
+        margin-left: 10px;
+      }
+    }
+  }
+
   @media (max-width: $sm) {
     display: none;
   }
