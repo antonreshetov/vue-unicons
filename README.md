@@ -62,15 +62,15 @@ new Vue({
 
 `App.vue`
 
-> Use the name of icon without the uni prefix, icon style and in the kebab-case :
-> `uniCarWash` -> `car-wash`
+> Use the name of icon without the uni prefix, icon style and in the kebab-case: <br>
+> `uniCarWash` -> `car-wash`<br>
 > `uniLayerGroupMonochrome` -> `layer-group`
 
 ```html
 <template>
   <div>
     <unicon name="car-wash" fill="limegreen"></unicon>
-    <unicon name="layer-group" fill="royalblue" icon-style="monochrome></unicon>
+    <unicon name="layer-group" fill="royalblue" icon-style="monochrome"></unicon>
   </div>
 </template>
 ```
