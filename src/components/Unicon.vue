@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'Unicon',
 
@@ -53,9 +52,9 @@ export default {
 
   computed: {
     icon () {
-      const icons = this.$options.lib.filter(i => i.name === this.name)
-
-      const icon = icons.find(i => i.style === this.iconStyle)
+      const icon = this.$options.lib.find(
+        i => i.name === this.name && i.style === this.iconStyle
+      )
 
       if (icon) {
         return icon.path
@@ -80,10 +79,10 @@ export default {
   opacity: 0.7;
 }
 .uim-tertiary {
-  opacity: .5;
+  opacity: 0.5;
 }
 .uim-quaternary {
-  opacity: .25;
+  opacity: 0.25;
 }
 .uim-quinary {
   opacity: 0;
