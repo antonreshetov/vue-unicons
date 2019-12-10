@@ -122,6 +122,31 @@ new Vue({
 
 [See example](https://codesandbox.io/s/vue-template-t8y1l)
 
+## Nuxt
+
+Installation in Nuxt is almost the same, except that you need to create a separate file in the `plugins` folder:
+
+`plugins/vue-unicons.js`
+
+```js
+import Vue from 'vue'
+import Unicon from 'vue-unicons'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/src/icons'
+
+Unicon.add([uniLayerGroupMonochrome, uniCarWash])
+Vue.use(Unicon)
+```
+
+Then we add the file path inside the plugins key in `nuxt.config.js`, and set `mode: 'client'` to make vue-unicons work only in a browser.
+
+```js
+  ...
+  plugins: [
+    { src: '~/plugins/vue-unicons', mode: 'client' }
+  ]
+  ...
+```
+
 ## Props
 
 |     Name     |    Description     |   Type   |  Accepted values  | Default value |
