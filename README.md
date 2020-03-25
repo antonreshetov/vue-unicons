@@ -10,6 +10,21 @@
 
 1000+ Pixel-perfect svg [unicons](https://github.com/iconscout/unicons) for your next project as Vue components
 
+## Supporting
+
+Vue Unicons is open source project and completely free to use.
+
+If you like the project, you can donate to support the development via the following methods:
+
+
+<div align="center">
+
+[![Donate via Patreon](https://img.shields.io/badge/donate-patreon-orange.svg?style=popout&logo=patreon)](https://www.patreon.com/antonreshetov)
+[![Donate via PayPal](https://img.shields.io/badge/donate-paypal-blue.svg?style=popout&logo=paypal)](https://paypal.me/antonreshetov)
+[![Donate via Bitcoin](https://img.shields.io/badge/donate-bitcoin-ff9900.svg?style=popout&logo=bitcoin&logoColor=CCC)](https://blockchain.com/btc/payment_request?address=1GnNU7UGrXyKx5Zd3uDfhCLL716AYBJwAJ&amount=0.00010450&message=Contribution%20to%20massCode)
+
+</div>
+
 ## Demo
 
 [https://antonreshetov.github.io/vue-unicons](https://antonreshetov.github.io/vue-unicons/)
