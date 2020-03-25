@@ -31,12 +31,13 @@
     "icons"
   ],
   "dependencies": {
-    "unicons": "github:antonreshetov/unicons#master",
     "prismjs": "^1.15.0",
+    "unicons": "github:antonreshetov/unicons#master",
     "vue": "^2.5.22",
     "vue-analytics": "^5.16.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.9.0",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/cli-plugin-unit-jest": "^3.4.0",
