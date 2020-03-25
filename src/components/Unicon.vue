@@ -5,8 +5,9 @@
       xmlns="http://www.w3.org/2000/svg"
       :width="width"
       :height="height"
-      viewBox="0 0 24 24"
+      :viewBox.camel="viewBox"
       :fill="fill"
+      v-bind="$attrs"
       @click="$emit('click')"
       v-html="icon"
     />
@@ -16,6 +17,8 @@
 <script>
 export default {
   name: 'Unicon',
+
+  inheritAttrs: false,
 
   props: {
     name: {
@@ -37,6 +40,10 @@ export default {
     fill: {
       type: String,
       default: 'inherit'
+    },
+    viewBox: {
+      type: String,
+      default: '0 0 24 24'
     }
   },
 
