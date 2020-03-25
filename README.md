@@ -85,6 +85,7 @@ No icons you need? No problem, you can add custom svg icons.
 // Always use a prefix to avoid coincidence with existing icons.
 export const myCustomIcon = {
   name: 'my-custom-icon',
+  style: 'line',
   path: '<path d="M16.327 10.775a.312.312 0 0...</path>' // Copy everything inside the svg tag of the icon you want and past there
 }
 ```
