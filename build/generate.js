@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const uniconsLine = require('unicons/json/line.json')
-const uniconsMonochrome = require('unicons/json/monochrome.json')
+const uniconsLine = require('@iconscout/unicons/json/line.json')
+const uniconsMonochrome = require('@iconscout/unicons/json/monochrome.json')
 const Handlebars = require('handlebars')
 const camelCase = require('lodash.camelcase')
 const dist = path.resolve(__dirname, '../src/')
@@ -16,7 +16,7 @@ function upperFirstLetter (str) {
 function format (icons) {
   return icons.map(icon => {
     return readFile(
-      path.resolve('node_modules/unicons', icon.svg),
+      path.resolve('node_modules/@iconscout/unicons', icon.svg),
       'utf-8'
     ).then(svg => {
       // add formatted name
