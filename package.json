@@ -6,7 +6,9 @@
   "main": "dist/vue-unicons.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "build:libs": "npm run build && npm run build:ssr",
     "build": "npm run test:unit && vue-cli-service build --target lib --name vue-unicons ./src/components/index.js",
+    "build:ssr": "npm run test:unit && env SSR_MODE=on vue-cli-service build --target lib --no-clean --name vue-unicons-ssr ./src/components/index.js",
     "build:docs": "vue-cli-service build --dest docs",
     "generate": "node ./build/generate.js",
     "lint": "vue-cli-service lint",
