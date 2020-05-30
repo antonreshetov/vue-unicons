@@ -140,14 +140,15 @@ new Vue({
 
 ## Nuxt
 
-Installation in Nuxt is almost the same, except that you need to create a separate file in the `plugins` folder:
+Installation in Nuxt is almost the same, except that you need import SSR build of library, styles and create a separate file in the `plugins` folder:
 
 `plugins/vue-unicons.js`
 
 ```js
 import Vue from 'vue'
-import Unicon from 'vue-unicons'
+import Unicon from 'vue-unicons/dist/vue-unicons-ssr.common.js'
 import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/src/icons'
+import 'vue-unicons/dist/vue-unicons-ssr.css'
 
 Unicon.add([uniLayerGroupMonochrome, uniCarWash])
 Vue.use(Unicon)
