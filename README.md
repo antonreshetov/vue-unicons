@@ -164,6 +164,17 @@ Then we add the file path inside the plugins key in `nuxt.config.js`, and set `m
   ...
 ```
 
+```html
+<template>
+  <div>
+    <client-only>
+      <unicon name="car-wash" fill="limegreen"></unicon>
+      <unicon name="layer-group" fill="royalblue" icon-style="monochrome"></unicon>
+    </client-only>
+  </div>
+</template>
+```
+
 ## Props
 
 |     Name     |    Description     |   Type   |  Accepted values  | Default value |
