@@ -90,6 +90,18 @@ new Vue({
 </template>
 ```
 
+## Global config
+
+You can configure the icons globally. Simply specify the required parameters during installation.
+
+```js
+Vue.use(Unicon, {
+  fill: 'deeppink',
+  height: 32,
+  width: 32
+})
+```
+
 ## Add custom icons
 
 No icons you need? No problem, you can add custom svg icons.
