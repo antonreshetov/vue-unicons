@@ -1415,10 +1415,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@iconscout/unicons@^2.1.9":
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/@iconscout/unicons/-/unicons-2.1.9.tgz#c5c48fd69335b047d2e0f539c83b7846b4e19550"
-  integrity sha512-xqxybtdb3Q8uXVteYMdQjF1RFybMdxbL8YsYYCSbBdR9VT8wWevow6RL6mXOUwEF18t75lPg9GzM822ihzCIaA==
+"@iconscout/unicons@^2.1.11":
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/@iconscout/unicons/-/unicons-2.1.11.tgz#9e8260045408da6eff10d0c531215930ba46b311"
+  integrity sha512-4yRgh76BpdVzrK1St8tEMJdZUKtIZNmIwkXRIL5v5vezvQth84KMqrvU3No5kRb0sWd2GkU+JQzumbInYDZH/w==
   dependencies:
     async "^2.6.1"
     axios "^0.19.0"
