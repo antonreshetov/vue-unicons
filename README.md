@@ -1,5 +1,3 @@
-> This repo is for use in Vue 2. Repo for Vue 3 [there](https://github.com/antonreshetov/vue-unicons-next). 
-
 <p align="center">
   <img src="https://img.shields.io/npm/v/vue-unicons.svg">
   <img src="https://img.shields.io/github/issues/antonreshetov/vue-unicons.svg">
