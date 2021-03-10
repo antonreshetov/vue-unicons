@@ -67,7 +67,7 @@ To use in your project:
 import { createApp } from 'vue'
 import App from './App.vue'
 import Unicon from 'vue-unicons'
-import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/icons'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
 
 Unicon.add([uniLayerGroupMonochrome, uniCarWash])
 
@@ -79,8 +79,8 @@ createApp(App).use(Unicon).mount('#app')
 ```js
 import Vue from 'vue'
 import App from './App.vue'
-import Unicon from 'vue-unicons/vue-unicons-vue2.umd'
-import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/icons'
+import Unicon from 'vue-unicons/dist/vue-unicons-vue2.umd'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
 
 Unicon.add([uniLayerGroupMonochrome, uniCarWash])
 Vue.use(Unicon)
@@ -143,7 +143,7 @@ export const myCustomIcon = {
 import { createApp } from 'vue'
 import App from './App.vue'
 import Unicon from 'vue-unicons'
-import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/icons'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
 import { myCustomIcon } from './custom-icons'
 
 Unicon.add([uniLayerGroupMonochrome, uniCarWash, myCustomIcon])
@@ -173,8 +173,8 @@ Installation in Nuxt is almost the same, except that you need to create a separa
 
 ```js
 import Vue from 'vue'
-import Unicon from 'vue-unicons/vue-unicons-vue2.umd'
-import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/icons'
+import Unicon from 'vue-unicons/dist/vue-unicons-vue2.umd'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
 
 Unicon.add([uniLayerGroupMonochrome, uniCarWash])
 Vue.use(Unicon)
