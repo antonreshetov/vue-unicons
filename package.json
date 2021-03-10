@@ -11,7 +11,6 @@
     "build:libs-vue2": "TARGET=vue2 npm run build:libs",
     "build:esm": "rollup --config ./build/config/rollup/rollup.config.es.js",
     "build:umd": "rollup --config ./build/config/rollup/rollup.config.umd.js",
-    "build:ssr": "npm run test:unit && env SSR_MODE=on vue-cli-service build --target lib --no-clean --name vue-unicons-ssr ./src/components/index.js",
     "build:docs": "vue-cli-service build --dest docs",
     "generate": "node ./build/generate.js",
     "lint": "vue-cli-service lint",
