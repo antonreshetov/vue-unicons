@@ -63,11 +63,26 @@ To use in your project:
 
 `main.js`
 
+**Vue 3**
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import Unicon from 'vue-unicons'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
+
+Unicon.add([uniLayerGroupMonochrome, uniCarWash])
+
+createApp(App).use(Unicon).mount('#app')
+```
+
+**Vue 2**
+
 ```js
 import Vue from 'vue'
 import App from './App.vue'
-import Unicon from 'vue-unicons'
-import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/src/icons'
+import Unicon from 'vue-unicons/dist/vue-unicons-vue2.umd'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
 
 Unicon.add([uniLayerGroupMonochrome, uniCarWash])
 Vue.use(Unicon)
@@ -92,16 +107,19 @@ new Vue({
 </template>
 ```
 
-## Global config
+### Config
 
 You can configure the icons globally. Simply specify the required parameters during installation.
 
 ```js
-Vue.use(Unicon, {
-  fill: 'deeppink',
-  height: 32,
-  width: 32
-})
+...
+createApp(App)
+  .use(Unicon, {
+    fill: 'deeppink',
+    height: 32,
+    width: 32
+  })
+  .mount('#app')
 ```
 
 ## Add custom icons
@@ -124,18 +142,15 @@ export const myCustomIcon = {
 `main.js`
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import Unicon from 'vue-unicons'
-import { uniConstructor, uniCarWash } from 'vue-unicons/src/icons'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
 import { myCustomIcon } from './custom-icons'
 
-Unicon.add([uniConstructor, uniCarWash, myCustomIcon])
-Vue.use(Unicon)
+Unicon.add([uniLayerGroupMonochrome, uniCarWash, myCustomIcon])
 
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
+createApp(App).use(Unicon).mount('#app')
 ```
 
 `App.vue`
@@ -154,15 +169,14 @@ new Vue({
 
 ## Nuxt
 
-Installation in Nuxt is almost the same, except that you need import SSR build of library, styles and create a separate file in the `plugins` folder:
+Installation in Nuxt is almost the same, except that you need to create a separate file in the `plugins` folder:
 
 `plugins/vue-unicons.js`
 
 ```js
 import Vue from 'vue'
-import Unicon from 'vue-unicons/dist/vue-unicons-ssr.common.js'
-import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/src/icons'
-import 'vue-unicons/dist/vue-unicons-ssr.css'
+import Unicon from 'vue-unicons/dist/vue-unicons-vue2.umd'
+import { uniLayerGroupMonochrome, uniCarWash } from 'vue-unicons/dist/icons'
 
 Unicon.add([uniLayerGroupMonochrome, uniCarWash])
 Vue.use(Unicon)
