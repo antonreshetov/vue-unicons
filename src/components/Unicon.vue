@@ -66,7 +66,7 @@ export default {
       if (icon) {
         return icon.path
       } else {
-        console.error('Name of the icon is not correct')
+        console.error(`Name '${ this.name }' of the icon is not correct`)
         return undefined
       }
     }
