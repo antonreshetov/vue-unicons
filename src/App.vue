@@ -239,10 +239,21 @@ export default {
         return `${i.nameFormatted}`
       })
       iconName = iconName.join(', ')
-      const code = `import Vue from 'vue'
+      const code = `// Vue 3
+import { createApp } from 'vue'
 import App from './App.vue'
 import Unicon from 'vue-unicons'
-import { ${iconName} } from 'vue-unicons/src/icons'
+import { ${iconName} } from 'vue-unicons/dist/icons'
+
+Unicon.add([${iconName}])
+
+createApp(App).use(Unicon).mount('#app')
+
+// Vue 2
+import Vue from 'vue'
+import App from './App.vue'
+import Unicon from 'vue-unicons/dist/vue-unicons-vue2.umd'
+import { ${iconName} } from 'vue-unicons/dist/icons'
 
 Unicon.add([${iconName}])
 Vue.use(Unicon)
