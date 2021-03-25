@@ -1457,18 +1457,19 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@iconscout/unicons@^2.1.9":
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/@iconscout/unicons/-/unicons-2.1.9.tgz#c5c48fd69335b047d2e0f539c83b7846b4e19550"
-  integrity sha512-xqxybtdb3Q8uXVteYMdQjF1RFybMdxbL8YsYYCSbBdR9VT8wWevow6RL6mXOUwEF18t75lPg9GzM822ihzCIaA==
+"@iconscout/unicons@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@iconscout/unicons/-/unicons-3.0.6.tgz#12076f1a1bf626b072d3950e7abf64fddc1c3497"
+  integrity sha512-qSnFPrPKKsALyRdhq6MsllThURc0usa+U9gztiNg7W6EgAZgdo74HGiuGeLrPheE+c4S5oRXRHqKp6/Cv4W3WA==
   dependencies:
     async "^2.6.1"
     axios "^0.19.0"
     cheerio "^1.0.0-rc.2"
-    fontello-cli "^0.5.0"
+    cross-env "^7.0.2"
+    fontello-cli "^0.6.2"
     fs-plus "^3.1.1"
     glob "^7.1.3"
-    lodash "^4.17.15"
+    lodash "^4.17.20"
     parse-svg-path "^0.1.2"
     scale-svg-path "0.0.1"
     serialize-svg-path "^0.1.0"
@@ -4013,6 +4014,13 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+cross-env@^7.0.2:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.3.tgz#865264b29677dc015ba8418918965dd232fc54cf"
+  integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
+  dependencies:
+    cross-spawn "^7.0.1"
+
 cross-spawn@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982"
@@ -4045,6 +4053,15 @@ cross-spawn@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.1.tgz#0ab56286e0f7c24e153d04cc2aa027e43a9a5d14"
   integrity sha512-u7v4o84SwFpD32Z8IIcPZ6z1/ie24O6RU3RbtL5Y316l3KuHVPx9ItBgWQ6VlfAFnRnTtMUrsQ9MUUTuEZjogg==
+  dependencies:
+    path-key "^3.1.0"
+    shebang-command "^2.0.0"
+    which "^2.0.1"
+
+cross-spawn@^7.0.1:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
+  integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
   dependencies:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
@@ -5771,14 +5788,14 @@ follow-redirects@^1.0.0:
   dependencies:
     debug "^3.0.0"
 
-fontello-cli@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/fontello-cli/-/fontello-cli-0.5.0.tgz#dfe1d93952b0548fd15d2cc394985df87a3d9e2f"
-  integrity sha512-5Xkr63ycgjaAupYceoRf/BT09uBw9+7FYdW4o8wIHPu8KIH19AVFtsnJWWK6SVyOCgVOBBAj+WDz14g5y0e0Hw==
+fontello-cli@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/fontello-cli/-/fontello-cli-0.6.2.tgz#c1724f3b61c851a9bfae0c0943d958511e439433"
+  integrity sha512-/85DkJNgbGOu0sh7sUAxWLbzq0cytWQtvn7WuRzpn6mcla6TEQz1JbYmpkAjX/PJiW867ujgoaFqm4CUoBBgwA==
   dependencies:
     colors "^1.4.0"
     commander "^3.0.0"
-    mkdirp "^0.5.1"
+    mkdirp "^1.0.4"
     needle "^2.4.0"
     open "^7.0.0"
     unzipper "^0.10.5"
@@ -8256,7 +8273,7 @@ lodash@^4.15.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
-lodash@^4.17.19:
+lodash@^4.17.19, lodash@^4.17.20:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -8698,7 +8715,7 @@ mkdirp@0.5.1, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mkdirp@~1.0.4:
+mkdirp@^1.0.4, mkdirp@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
