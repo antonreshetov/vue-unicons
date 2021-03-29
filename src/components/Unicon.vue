@@ -6,9 +6,11 @@
       :width="width"
       :height="height"
       :viewBox.camel="viewBox"
-      :fill="fill"
+      :fill="localFill"
       v-bind="$attrs"
       @click="$emit('click')"
+      @mouseover="onHover"
+      @mouseout="onLeave"
       v-html="icon"
     />
   </div>
@@ -41,6 +43,10 @@ export default {
       type: String,
       default: 'inherit'
     },
+    hoverFill: {
+      type: String,
+      default: null
+    },
     viewBox: {
       type: String,
       default: '0 0 24 24'
@@ -57,6 +63,12 @@ export default {
     }
   },
 
+  data () {
+    return {
+      localFill: this.fill
+    }
+  },
+
   computed: {
     icon () {
       const icon = this.$options.lib.find(
@@ -66,8 +78,20 @@ export default {
       if (icon) {
         return icon.path
       } else {
-        console.error(`Name '${ this.name }' of the icon is not correct`)
+        console.error(`Name '${this.name}' of the icon is not correct`)
         return undefined
+      }
+    }
+  },
+  methods: {
+    onHover () {
+      if (this.hoverFill) {
+        this.localFill = this.hoverFill
+      }
+    },
+    onLeave () {
+      if (this.hoverFill) {
+        this.localFill = this.fill
       }
     }
   }
@@ -77,6 +101,7 @@ export default {
 <style>
 .unicon {
   display: inline-block;
+  transition: 0.3s all;
   fill: var(--uni-color-primary);
 }
 .uim-primary {
