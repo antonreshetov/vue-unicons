@@ -209,6 +209,7 @@ Then we add the file path inside the plugins key in `nuxt.config.js`, and set `m
 | `width`      | Width of icon      | `string` | -                 | -             |
 | `height`     | Height of icon     | `string` | -                 | -             |
 | `fill`       | Fill color of icon | `string` | HEX or color name | -             |
+| `hover-fill` | Fill color on hover| `string` | HEX or color name | -             |
 | `icon-style` | Icon style         | `string` | line / monochrome | line          |
 
 ## Events
