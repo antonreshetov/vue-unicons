@@ -101,8 +101,9 @@ export default {
 <style>
 .unicon {
   display: inline-block;
-  transition: 0.3s all;
-  fill: var(--uni-color-primary);
+}
+.unicon svg {
+  transition: 0.2s all;
 }
 .uim-primary {
   opacity: 1;
