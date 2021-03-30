@@ -65,4 +65,23 @@ describe('Unicon', () => {
     svg.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
   })
+  it('hover fill is working', () => {
+    const wrapper = shallowMount(Unicon, {
+      propsData: {
+        ...baseProps,
+        fill: 'blue',
+        hoverFill: 'red'
+      }
+    })
+    expect(wrapper.exists()).toBe(true)
+    expect(wrapper.props().fill).toBe('blue')
+    expect(wrapper.props().hoverFill).toBe('red')
+
+    const svg = wrapper.find('svg')
+    svg.trigger('mouseover')
+    expect(svg.attributes().fill).toBe('red')
+
+    svg.trigger('mouseout')
+    expect(svg.attributes().fill).toBe('blue')
+  })
 })
