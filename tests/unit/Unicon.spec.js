@@ -68,17 +68,12 @@ describe('Unicon', () => {
   it('hover fill is working', () => {
     const wrapper = shallowMount(Unicon, {
       propsData: {
-        name: 'constructor',
-        width: '20',
-        height: '20',
+        ...baseProps,
         fill: 'blue',
         hoverFill: 'red'
       }
     })
     expect(wrapper.exists()).toBe(true)
-    expect(wrapper.props().name).toBe('constructor')
-    expect(wrapper.props().width).toBe('20')
-    expect(wrapper.props().height).toBe('20')
     expect(wrapper.props().fill).toBe('blue')
     expect(wrapper.props().hoverFill).toBe('red')
 
