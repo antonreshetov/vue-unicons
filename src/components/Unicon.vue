@@ -83,6 +83,13 @@ export default {
       }
     }
   },
+
+  watch: {
+    fill (newColor) {
+      this.localFill = newColor
+    }
+  },
+
   methods: {
     onHover () {
       if (this.hoverFill) {
