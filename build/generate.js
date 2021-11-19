@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 const uniconsLine = require('@iconscout/unicons/json/line.json')
+const uniconsThinline = require('@iconscout/unicons/json/thinline.json')
+const uniconsSolid = require('@iconscout/unicons/json/solid.json')
 const uniconsMonochrome = require('@iconscout/unicons/json/monochrome.json')
 const Handlebars = require('handlebars')
 const camelCase = require('lodash.camelcase')
@@ -23,6 +25,10 @@ function format (icons) {
       const name = camelCase(icon.name)
       icon.nameFormatted = 'uni' + upperFirstLetter(name)
 
+      if (['Solid', 'Thinline'].includes(icon.style)) {
+        icon.nameFormatted = icon.nameFormatted + icon.style
+      }
+
       if (icon.style === 'monochrome') {
         icon.nameFormatted += upperFirstLetter(icon.style)
       }
@@ -44,8 +50,10 @@ function format (icons) {
 function generate () {
   const p1 = format(uniconsLine)
   const p2 = format(uniconsMonochrome)
+  const p3 = format(uniconsSolid)
+  const p4 = format(uniconsThinline)
   // await promises
-  Promise.all([...p1, ...p2]).then(icons => {
+  Promise.all([...p1, ...p2, ...p3, ...p4]).then(icons => {
     // get icon template
     const iconTemplate = fs.readFileSync(
       path.resolve(__dirname, './icon.hbs'),
