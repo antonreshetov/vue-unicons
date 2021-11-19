@@ -194,6 +194,8 @@ export default {
       style: 'line',
       styles: [
         { label: 'Line', value: 'line' },
+        { label: 'Thinline', value: 'thinline' },
+        { label: 'Solid', value: 'solid' },
         { label: 'Monochrome', value: 'monochrome' }
       ],
       alert: false,

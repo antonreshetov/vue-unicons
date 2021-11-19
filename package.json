@@ -39,7 +39,7 @@
     "icons"
   ],
   "dependencies": {
-    "@iconscout/unicons": "^3.0.6",
+    "@iconscout/unicons": "^4.0.1",
     "prismjs": "^1.15.0",
     "vue": "^2.5.22",
     "vue-analytics": "^5.16.2"
