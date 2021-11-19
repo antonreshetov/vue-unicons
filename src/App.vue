@@ -279,7 +279,8 @@ new Vue({
       this.scrollToTopList()
     },
     addToCart (icon) {
-      const index = this.iconCart.findIndex(i => i.name === icon.name)
+      console.log(icon)
+      const index = this.iconCart.findIndex(i => i.nameFormatted === icon.nameFormatted)
 
       if (index === -1) {
         this.iconCart.push(icon)
@@ -296,7 +297,7 @@ new Vue({
       this.storeToLocalStorage()
     },
     isInCart (icon) {
-      const isInCart = this.iconCart.findIndex(i => i.name === icon.name) !== -1
+      const isInCart = this.iconCart.findIndex(i => i.nameFormatted === icon.nameFormatted) !== -1
       return isInCart
     },
     storeToLocalStorage () {
