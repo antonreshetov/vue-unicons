@@ -4,6 +4,7 @@
   "private": false,
   "description": "1000+ Pixel-perfect svg icons for your next project as Vue components",
   "main": "./dist/vue-unicons.umd.js",
+  "types": "src/types.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "rm -rf ./dist && npm run build:libs && npm run build:libs-vue2",
@@ -88,6 +89,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "types": "./src/main.d.ts"
+  }
 }
