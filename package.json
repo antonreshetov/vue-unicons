@@ -89,5 +89,5 @@
       "git add"
     ]
   },
-  "types": "./src/main.d.ts"
+  "types": "./dist/main.d.ts"
 }
