@@ -20,7 +20,8 @@ export default {
     postcss(),
     copy({
       targets: [
-        { src: 'src/icons.js', dest: 'dist' }
+        { src: 'src/icons.js', dest: 'dist' },
+        { src: 'src/main.d.ts', dest: 'dist' }
       ]
     }),
     babel({ babelHelpers: 'bundled', exclude: 'node_modules/**' }),
